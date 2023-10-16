@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\KaryawanController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Karyawan;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard', [
+        "title" => "Dashboard",
+    ]);
 });
+
+// Route::get('/karyawan', [KaryawanController::class, 'index']);
+//route resource
+Route::resource('/karyawan', \App\Http\Controllers\KaryawanController::class);
+
+Route::resource('/tunjangan', \App\Http\Controllers\TunjanganController::class);
